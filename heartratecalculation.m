@@ -10,7 +10,7 @@ b = 41;
 time = linspace(a,b,(b-a)/int);
 
 % Peak vector created from exported peak .csv file
-filename = 'C:\Gu Lab\OSU\Projects\EEG analyses\Matlab scripts\ECG\cc009_1_2nd_base.csv'
+filename = '[File location on user disk]'
 peaks = [csvread(filename)]
 
 % Record heart beats between current and next interval
@@ -23,12 +23,9 @@ for i = 1:length(time)
     end
 end
 
-% Moving average to remove outliers
-avgpeaks = movmean(heartbeat,2);
-
 % Average BPM per second calculated
-for i = 1:length(avgpeaks)
-    beatspermin(i) = avgpeaks(i)/int * 60;
+for i = 1:length(heartbeat)
+    beatspermin(i) = heartbeat(i)/int * 60;
 end
 
 % Plot BPM vs Time
